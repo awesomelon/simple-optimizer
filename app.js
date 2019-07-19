@@ -11,12 +11,12 @@ const fs = require('fs');
         use: [imageminMozjpeg(), imageminPngquant(), imageminGifsicle()]
     });
 
-    await glob('**/**/*.css', function(er, css) {
-        if (er) {
+    let cssFiles = await glob('**/**/*.css', (err, css) => {
+        if (err) {
             console.log(er);
         } else {
             css.forEach(element => {
-                var uglified = uglifycss.processFiles(['./' + element], {
+                let uglified = uglifycss.processFiles(['./' + element], {
                     maxLineLen: 500,
                     expandVars: true
                 });
@@ -24,6 +24,7 @@ const fs = require('fs');
             });
         }
     });
-    console.log(files);
+    // console.log(files);
+    // console.log(cssFiles);
     //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
 })();
