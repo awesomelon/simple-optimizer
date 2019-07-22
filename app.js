@@ -2,29 +2,22 @@ const imagemin = require('imagemin-keep-folder');
 const imageminPngquant = require('imagemin-pngquant');
 const imageminGifsicle = require('imagemin-gifsicle');
 const imageminMozjpeg = require('imagemin-mozjpeg');
-const glob = require('glob');
+const globby = require('globby');
 const uglifycss = require('uglifycss');
 const fs = require('fs');
 
 (async () => {
+    let cssFiles = await globby(['**/**/*.css', '!node_modules']).then(css => {
+        css.forEach(element => {
+            let uglified = uglifycss.processFiles(['./' + element], {
+                maxLineLen: 500,
+                expandVars: true
+            });
+            fs.writeFileSync('./' + element, uglified);
+        });
+    });
     let files = await imagemin(['**/**/*.{jpg,png,gif}'], {
         use: [imageminMozjpeg(), imageminPngquant(), imageminGifsicle()]
     });
-
-    let cssFiles = await glob('**/**/*.css', (err, css) => {
-        if (err) {
-            console.log(er);
-        } else {
-            css.forEach(element => {
-                let uglified = uglifycss.processFiles(['./' + element], {
-                    maxLineLen: 500,
-                    expandVars: true
-                });
-                fs.writeFileSync('./' + element, uglified);
-            });
-        }
-    });
-    // console.log(files);
-    // console.log(cssFiles);
-    //=> [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
+    // => [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
 })();

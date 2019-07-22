@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add swiper.min.css
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add globbuy
 
 PATH: 
   C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\pc\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Ruby24-x64\bin;C:\Program Files\Bandizip;C:\Program Files\Microsoft VS Code\bin;C:\Users\pc\AppData\Roaming\npm;C:\Users\pc\AppData\Local\Yarn\bin;C:\Users\pc\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\heroku\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/swiper.min.css: Not found
+  Error: https://registry.yarnpkg.com/globbuy: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65364:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:129397:22)
       at Request.emit (events.js:182:13)
@@ -28,34 +28,37 @@ Trace:
 
 npm manifest: 
   {
-    "name": "bang-imagemin",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "build": "node app"
-    },
-    "keywords": [],
-    "author": "BANG",
-    "license": "ISC",
-    "dependencies": {
-      "gsap": "^2.1.3",
-      "imagemin": "^6.1.0",
-      "imagemin-gifsicle": "^6.0.1",
-      "imagemin-jpegtran": "^6.0.0",
-      "imagemin-keep-folder": "^5.3.2",
-      "imagemin-mozjpeg": "^8.0.0",
-      "imagemin-pngquant": "^7.0.0",
-      "jquery": "^3.4.1",
-      "reset.css": "^2.0.2"
-    },
-    "repository": "git+https://github.com/awesomelon/gulp-test.git",
-    "bugs": {
-      "url": "https://github.com/awesomelon/gulp-test/issues"
-    },
-    "homepage": "https://github.com/awesomelon/gulp-test#readme",
-    "devDependencies": {},
-    "description": ""
+      "name": "bang-imagemin",
+      "version": "1.0.0",
+      "main": "index.js",
+      "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1",
+          "build": "node app"
+      },
+      "keywords": [],
+      "author": "BANG",
+      "license": "MIT",
+      "dependencies": {
+          "clean-css": "^4.2.1",
+          "csso": "^3.5.1",
+          "glob": "^7.1.4",
+          "gsap": "^2.1.3",
+          "imagemin": "^6.1.0",
+          "imagemin-gifsicle": "^6.0.1",
+          "imagemin-jpegtran": "^6.0.0",
+          "imagemin-keep-folder": "^5.3.2",
+          "imagemin-mozjpeg": "^8.0.0",
+          "imagemin-pngquant": "^7.0.0",
+          "jquery": "^3.4.1",
+          "reset.css": "^2.0.2"
+      },
+      "repository": "git+https://github.com/awesomelon/gulp-test.git",
+      "bugs": {
+          "url": "https://github.com/awesomelon/gulp-test/issues"
+      },
+      "homepage": "https://github.com/awesomelon/gulp-test#readme",
+      "devDependencies": {},
+      "description": ""
   }
 
 yarn manifest: 
@@ -374,6 +377,13 @@ Lockfile:
       isobject "^3.0.0"
       static-extend "^0.1.1"
   
+  clean-css@^4.2.1:
+    version "4.2.1"
+    resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
+    integrity sha512-4ZxI6dy4lrY6FHzfiy1aEOXgu4LIsW2MhwG0VBKdcoGoH/XLFgaHSdLTGr4O8Be6A8r3MOphEiI8Gc1n0ecf3g==
+    dependencies:
+      source-map "~0.6.0"
+  
   clone-response@1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/clone-response/-/clone-response-1.0.2.tgz#d1dc973920314df67fbeb94223b4ee350239e96b"
@@ -455,6 +465,21 @@ Lockfile:
       semver "^5.5.0"
       shebang-command "^1.2.0"
       which "^1.2.9"
+  
+  css-tree@1.0.0-alpha.29:
+    version "1.0.0-alpha.29"
+    resolved "https://registry.yarnpkg.com/css-tree/-/css-tree-1.0.0-alpha.29.tgz#3fa9d4ef3142cbd1c301e7664c1f352bd82f5a39"
+    integrity sha512-sRNb1XydwkW9IOci6iB2xmy8IGCj6r/fr+JWitvJ2JxQRPzN3T4AGGVWCMlVmVwM1gtgALJRmGIlWv5ppnGGkg==
+    dependencies:
+      mdn-data "~1.1.0"
+      source-map "^0.5.3"
+  
+  csso@^3.5.1:
+    version "3.5.1"
+    resolved "https://registry.yarnpkg.com/csso/-/csso-3.5.1.tgz#7b9eb8be61628973c1b261e169d2f024008e758b"
+    integrity sha512-vrqULLffYU1Q2tLdJvaCYbONStnfkfimRxXNaGjxMldI0C7JPBC4rB1RyjhfdZ4m1frm8pM9uRPKH3d2knZ8gg==
+    dependencies:
+      css-tree "1.0.0-alpha.29"
   
   currently-unhandled@^0.4.1:
     version "0.4.1"
@@ -930,7 +955,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.3.0.tgz#8c5a1494d2066c570cc3bfe4496175acc4d502ab"
     integrity sha1-jFoUlNIGbFcMw7/kSWF1rMTVAqs=
   
-  glob@^7.0.3, glob@^7.1.2, glob@^7.1.3:
+  glob@^7.0.3, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4:
     version "7.1.4"
     resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
     integrity sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==
@@ -1517,6 +1542,11 @@ Lockfile:
     integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
     dependencies:
       object-visit "^1.0.0"
+  
+  mdn-data@~1.1.0:
+    version "1.1.4"
+    resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-1.1.4.tgz#50b5d4ffc4575276573c4eedb8780812a8419f01"
+    integrity sha512-FSYbp3lyKjyj3E7fMl6rYvUdX0FBXaluGqlFoYESWQlyUTq8R+wp0rkFxoYFqZlHCvsUXGjyJmLQSnXToYhOSA==
   
   meow@^3.3.0:
     version "3.7.0"
@@ -2168,10 +2198,15 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
     integrity sha1-PpNdfd1zYxuXZZlW1VEo6HtQhKM=
   
-  source-map@^0.5.6:
+  source-map@^0.5.3, source-map@^0.5.6:
     version "0.5.7"
     resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
     integrity sha1-igOdLRAh0i0eoUyA2OpGi6LvP8w=
+  
+  source-map@~0.6.0:
+    version "0.6.1"
+    resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
+    integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
   
   spdx-correct@^3.0.0:
     version "3.1.0"
