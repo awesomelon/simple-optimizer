@@ -4,9 +4,25 @@ const imageminGifsicle = require('imagemin-gifsicle');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const globby = require('globby');
 const uglifycss = require('uglifycss');
+const minifyHtml = require('html-minifier').minify;
 const fs = require('fs');
 
 (async () => {
+    let htmlFiles = await globby(['**/**/*.html', '!node_modules']).then(html => {
+        html.forEach(element => {
+            let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
+            let result = minifyHtml(files, {
+                collapseBooleanAttributes: true,
+                collapseWhitespace: true,
+                processConditionalComments: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                removeComments: true
+            });
+            fs.writeFileSync('./' + element, result);
+        });
+    });
+
     let cssFiles = await globby(['**/**/*.css', '!node_modules']).then(css => {
         css.forEach(element => {
             let uglified = uglifycss.processFiles(['./' + element], {
@@ -16,6 +32,7 @@ const fs = require('fs');
             fs.writeFileSync('./' + element, uglified);
         });
     });
+
     let files = await imagemin(['**/**/*.{jpg,png,gif}'], {
         use: [imageminMozjpeg(), imageminPngquant(), imageminGifsicle()]
     });
