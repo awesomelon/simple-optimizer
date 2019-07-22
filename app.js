@@ -14,10 +14,12 @@ const fs = require('fs');
             let result = minifyHtml(files, {
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true,
+                // preserveLineBreaks: true,
                 processConditionalComments: true,
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
-                removeComments: true
+                removeComments: true,
+                minifyJS: true
             });
             fs.writeFileSync('./' + element, result);
         });
