@@ -8,16 +8,19 @@ const minifyHtml = require('html-minifier').minify;
 const fs = require('fs');
 
 (async () => {
-    let htmlFiles = await globby(['**/**/*.html', '!node_modules']).then(html => {
+    await globby(['**/**/*.html', '!node_modules']).then(html => {
         html.forEach(element => {
             let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
             let result = minifyHtml(files, {
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true,
+                html5: true,
                 // preserveLineBreaks: true,
                 processConditionalComments: true,
                 removeScriptTypeAttributes: true,
                 removeStyleLinkTypeAttributes: true,
+                removeTagWhitespace: true,
+                trimCustomFragments: true,
                 removeComments: true,
                 minifyJS: true
             });
@@ -25,18 +28,26 @@ const fs = require('fs');
         });
     });
 
-    let cssFiles = await globby(['**/**/*.css', '!node_modules']).then(css => {
+    await globby(['**/**/*.css', '!node_modules']).then(css => {
         css.forEach(element => {
             let uglified = uglifycss.processFiles(['./' + element], {
                 maxLineLen: 500,
                 expandVars: true
+                // uglyComments: false
             });
             fs.writeFileSync('./' + element, uglified);
         });
     });
 
-    let files = await imagemin(['**/**/*.{jpg,png,gif}'], {
-        use: [imageminMozjpeg(), imageminPngquant(), imageminGifsicle()]
+    let png = await imagemin(['**/**/*.{jpg,png}'], {
+        use: [imageminMozjpeg(), imageminPngquant()]
     });
+
+    await imagemin(['**/**/*.gif'], {
+        use: [imageminGifsicle()]
+    });
+
+    console.log('==================Complete=================');
+    console.log(png);
     // => [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
 })();
