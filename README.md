@@ -130,7 +130,12 @@ const fs = require('fs');
 
 ## 사용법
 
+#### 패키지 설치
+
 `yarn install` <br>
+`or`<br>
 `npm install` <br>
+
+#### 실행
 
 `node app.js`
