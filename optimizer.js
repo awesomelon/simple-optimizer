@@ -9,41 +9,41 @@ const fs = require('fs');
 
 (async () => {
 	// await globby(['**/**/*.html', '!node_modules']).then(html => {
-	//     html.forEach(element => {
-	//         let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
-	//         let result = minifyHtml(files, {
-	//             collapseBooleanAttributes: true,
-	//             collapseWhitespace: true,
-	//             html5: true,
-	//             // preserveLineBreaks: true,
-	//             processConditionalComments: true,
-	//             removeScriptTypeAttributes: true,
-	//             removeStyleLinkTypeAttributes: true,
-	//             removeTagWhitespace: true,
-	//             trimCustomFragments: true,
-	//             removeComments: true,
-	//             minifyJS: true
-	//         });
-	//         fs.writeFileSync('./' + element, result);
-	//     });
+	// 	html.forEach(element => {
+	// 		let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
+	// 		let result = minifyHtml(files, {
+	// 			collapseBooleanAttributes: true,
+	// 			collapseWhitespace: true,
+	// 			html5: true,
+	// 			// preserveLineBreaks: true,
+	// 			processConditionalComments: true,
+	// 			removeScriptTypeAttributes: true,
+	// 			removeStyleLinkTypeAttributes: true,
+	// 			removeTagWhitespace: true,
+	// 			trimCustomFragments: true,
+	// 			removeComments: true,
+	// 			minifyJS: true
+	// 		});
+	// 		fs.writeFileSync('./' + element, result);
+	// 	});
 	// });
 
 	// await globby(['**/**/*.css', '!node_modules']).then(css => {
-	//     css.forEach(element => {
-	//         let uglified = uglifycss.processFiles(['./' + element], {
-	//             maxLineLen: 500,
-	//             expandVars: true
-	//             // uglyComments: false
-	//         });
-	//         fs.writeFileSync('./' + element, uglified);
-	//     });
+	// 	css.forEach(element => {
+	// 		let uglified = uglifycss.processFiles(['./' + element], {
+	// 			maxLineLen: 500,
+	// 			expandVars: true
+	// 			// uglyComments: false
+	// 		});
+	// 		fs.writeFileSync('./' + element, uglified);
+	// 	});
 	// });
 
-	let png = await imagemin(['**/**/*.{jpg,png}'], {
+	let png = await imagemin(['**/**/*.{jpg,png}', '!node_modules/**'], {
 		use: [imageminMozjpeg(), imageminPngquant()]
 	});
 
-	await imagemin(['**/**/*.gif'], {
+	await imagemin(['**/**/*.gif', '!node_modules/**'], {
 		use: [imageminGifsicle()]
 	});
 
