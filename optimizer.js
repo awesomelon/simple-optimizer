@@ -8,46 +8,46 @@ const minifyHtml = require('html-minifier').minify;
 const fs = require('fs');
 
 (async () => {
-    // await globby(['**/**/*.html', '!node_modules']).then(html => {
-    // 	html.forEach(element => {
-    // 		let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
-    // 		let result = minifyHtml(files, {
-    // 			collapseBooleanAttributes: true,
-    // 			collapseWhitespace: true,
-    // 			html5: true,
-    // 			// preserveLineBreaks: true,
-    // 			processConditionalComments: true,
-    // 			removeScriptTypeAttributes: true,
-    // 			removeStyleLinkTypeAttributes: true,
-    // 			removeTagWhitespace: true,
-    // 			trimCustomFragments: true,
-    // 			removeComments: true,
-    // 			minifyJS: true
-    // 		});
-    // 		fs.writeFileSync('./' + element, result);
-    // 	});
-    // });
+	// await globby(['**/**/*.html', '!node_modules']).then(html => {
+	// 	html.forEach(element => {
+	// 		let files = fs.readFileSync('./' + element, (encoding = 'utf8'));
+	// 		let result = minifyHtml(files, {
+	// 			collapseBooleanAttributes: true,
+	// 			collapseWhitespace: true,
+	// 			html5: true,
+	// 			// preserveLineBreaks: true,
+	// 			processConditionalComments: true,
+	// 			removeScriptTypeAttributes: true,
+	// 			removeStyleLinkTypeAttributes: true,
+	// 			removeTagWhitespace: true,
+	// 			trimCustomFragments: true,
+	// 			removeComments: true,
+	// 			minifyJS: true
+	// 		});
+	// 		fs.writeFileSync('./' + element, result);
+	// 	});
+	// });
 
-    // await globby(['**/**/*.css', '!node_modules']).then(css => {
-    // 	css.forEach(element => {
-    // 		let uglified = uglifycss.processFiles(['./' + element], {
-    // 			maxLineLen: 500,
-    // 			expandVars: true
-    // 			// uglyComments: false
-    // 		});
-    // 		fs.writeFileSync('./' + element, uglified);
-    // 	});
-    // });
+	// await globby(['**/**/*.css', '!node_modules']).then(css => {
+	// 	css.forEach(element => {
+	// 		let uglified = uglifycss.processFiles(['./' + element], {
+	// 			maxLineLen: 500,
+	// 			expandVars: true
+	// 			// uglyComments: false
+	// 		});
+	// 		fs.writeFileSync('./' + element, uglified);
+	// 	});
+	// });
 
-    let png = await imagemin(['**/**/*.{jpg,png}', '!node_modules/**'], {
-        use: [imageminMozjpeg(), imageminPngquant({ quality: [0.3, 1] })]
-    });
+	let png = await imagemin(['**/**/*.{jpg,png}', '!node_modules/**'], {
+		use: [imageminMozjpeg(), imageminPngquant({ quality: [0.5, 1] })]
+	});
 
-    await imagemin(['**/**/*.gif', '!node_modules/**'], {
-        use: [imageminGifsicle()]
-    });
+	await imagemin(['**/**/*.gif', '!node_modules/**'], {
+		use: [imageminGifsicle()]
+	});
 
-    console.log('==================Complete=================');
-    console.log(png);
-    // => [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
+	console.log('==================Complete=================');
+	console.log(png);
+	// => [{data: <Buffer 89 50 4e …>, path: 'build/images/foo.jpg'}, …]
 })();
